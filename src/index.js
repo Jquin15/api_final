@@ -14,6 +14,10 @@ app.use(apiKeyMiddleware)
 app.use("/", userRouter)
 app.use("/auth", authRouter)
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', uptime: process.uptime() });
+});
+
 app.listen(port, ()=>{
     console.log('servidor corriendo en el port: ' + port);
 })
